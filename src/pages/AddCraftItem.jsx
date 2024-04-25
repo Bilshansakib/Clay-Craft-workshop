@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const AddCraftItem = () => {
   const handleAddCraft = (e) => {
     e.preventDefault();
@@ -40,6 +42,14 @@ const AddCraftItem = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Good job!",
+            text: "You Have Added The Craft Successfully!",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
       });
   };
   return (
@@ -81,7 +91,21 @@ const AddCraftItem = () => {
         <div className="col-span-2">
           <div>
             <label>Subcategory Name:</label>
-            <input type="text" name="subCategoryName" />
+            {/* <input type="text" name="subCategoryName" /> */}
+            <select name="subCategoryName">
+              <option value="ClayMadePottery">Clay-made pottery</option>
+              <option value="Stoneware">Stoneware</option>
+              <option value="Porcelain">Porcelain</option>
+              <option value="Ceramics&Architectural">
+                Ceramics & Architectural
+              </option>
+              <option
+                value="Home decor pottery
+"
+              >
+                Home decor pottery
+              </option>
+            </select>
           </div>
           <div>
             <label>Short Description:</label>

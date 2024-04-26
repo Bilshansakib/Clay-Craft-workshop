@@ -1,6 +1,8 @@
 import Swal from "sweetalert2";
+import useAuth from "../components/Hooks/UseAuth";
 
 const AddCraftItem = () => {
+  const { user, logOut } = useAuth() || {};
   const handleAddCraft = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,6 +17,7 @@ const AddCraftItem = () => {
     const stockStatus = form.stockStatus.value;
     const userEmail = form.userEmail.value;
     const userName = form.userName.value;
+    const email = user.email;
 
     const newCraftItem = {
       photo,
@@ -28,6 +31,7 @@ const AddCraftItem = () => {
       stockStatus,
       userEmail,
       userName,
+      email,
     };
     console.log(newCraftItem);
 

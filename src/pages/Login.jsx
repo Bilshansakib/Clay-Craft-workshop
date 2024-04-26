@@ -3,6 +3,7 @@ import useAuth from "../components/Hooks/UseAuth";
 import { useState } from "react";
 import SocialMediaLogin from "../components/SocialMediaLogin.jsx/SocialMediaLogin";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { signIn } = useAuth();
@@ -31,7 +32,28 @@ const Login = () => {
 
         setRegSuccess("Logged In");
         console.log();
-
+        let timerInterval;
+        Swal.fire({
+          title: "Auto close alert!",
+          html: "I will close in <b></b> milliseconds.",
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+              timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+          },
+          willClose: () => {
+            clearInterval(timerInterval);
+          },
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("I was closed by the timer");
+          }
+        });
         // navigating
         navigate(location?.state ? location.state : "/");
       })
@@ -83,12 +105,7 @@ const Login = () => {
             </a>
           </label>
         </div>
-        <div className="mb-2">
-          <input type="checkbox" name="terms" id="terms" />
-          <label className="ml-2 underline" htmlFor="terms">
-            Terms and Conditions
-          </label>
-        </div>
+
         {regError && <p className="text-red-700">{regError}</p>}
         {regSuccess && (
           <div>

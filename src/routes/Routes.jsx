@@ -32,17 +32,17 @@ const router = createBrowserRouter([
         path: "/myArtAndCraftList",
         element: <MyArtAndCraftList></MyArtAndCraftList>,
       },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
     ],
   },
 
-  {
-    path: "/login",
-    element: <Login></Login>,
-  },
-  {
-    path: "/register",
-    element: <Register></Register>,
-  },
   {
     path: "/users",
     element: <Users></Users>,

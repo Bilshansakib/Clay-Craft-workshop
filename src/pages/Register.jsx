@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import SocialMediaLogin from "../components/SocialMediaLogin.jsx/SocialMediaLogin";
 const Register = () => {
   const [regError, setRegError] = useState("");
   const [regSuccess, setRegSuccess] = useState("");
@@ -147,9 +148,32 @@ const Register = () => {
               </div>
             )}
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button className="btn btn-primary">Sign In</button>
             </div>
           </form>
+          <div className="flex items-center pt-4 space-x-1">
+            <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
+            <p className="px-3 text-sm text-gray-600">
+              Login with social accounts
+            </p>
+            <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
+          </div>
+          {/* social media */}
+          <div>
+            <SocialMediaLogin></SocialMediaLogin>
+          </div>
+          <p className="text-sm bg-white rounded-lg py-2  text-center sm:px-6 text-gray-600">
+            Already have an account?
+            <Link to="/login">
+              <a
+                rel="noopener noreferrer"
+                href="#"
+                className="underline font-semibold ml-1 text-red-600"
+              >
+                Login
+              </a>
+            </Link>
+          </p>
         </div>
       </div>
     </div>

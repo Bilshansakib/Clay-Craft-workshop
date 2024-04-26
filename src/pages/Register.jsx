@@ -1,15 +1,16 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../provider/AuthProvider";
+import { useState } from "react";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import SocialMediaLogin from "../components/SocialMediaLogin.jsx/SocialMediaLogin";
+import useAuth from "../components/Hooks/UseAuth";
 const Register = () => {
+  const { createUser } = useAuth();
   const [regError, setRegError] = useState("");
   const [regSuccess, setRegSuccess] = useState("");
   const [showPass, setShowPass] = useState(false);
-  const { createUser } = useContext(AuthContext);
+  //   const { createUser } = useContext(AuthContext);
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -41,6 +42,7 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
+        result.user;
         setRegSuccess("Registration Completed");
         // new user
         const createdAt = result.user?.metadata?.creationTime;

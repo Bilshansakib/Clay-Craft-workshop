@@ -1,6 +1,14 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import useAuth from "../Hooks/UseAuth";
 
 const NavBar = () => {
+  const { user, logOut } = useAuth() || {};
+  console.log(user);
+  const handleSignOut = () => {
+    logOut()
+      .then((result) => console.log(result))
+      .then((error) => console.error(error));
+  };
   const Links = (
     <>
       <li>
@@ -11,6 +19,12 @@ const NavBar = () => {
       </li>
       <li>
         <NavLink to="/addCraftItem">Add Craft Item</NavLink>
+      </li>
+      <li>
+        <NavLink to="/login">login</NavLink>
+      </li>
+      <li>
+        <NavLink to="/register">register</NavLink>
       </li>
     </>
   );
@@ -47,8 +61,46 @@ const NavBar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{Links}</ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
+      <div className="navbar-end gap-2">
+        {user && user.email}
+        {user ? (
+          <>
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img
+                    src={
+                      user?.photoURL ||
+                      "https://i.ibb.co/y0yrnYQ/1681283571946.jpg"
+                    }
+                  />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <button className="btn btn-sm  btn-ghost">
+                    {user?.displayName || "user name not found"}
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={handleSignOut}
+                    className="btn btn-sm  btn-ghost"
+                  >
+                    Logout
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </>
+        ) : (
+          <Link to="/login">
+            <button className="btn btn-ghost text-2xl ">Login</button>
+          </Link>
+        )}
       </div>
     </div>
   );

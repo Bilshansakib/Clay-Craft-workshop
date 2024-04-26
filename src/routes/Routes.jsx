@@ -7,6 +7,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import ErrorPage from "../pages/Error_page";
 import HomePage from "../pages/HomePage";
+import Users from "../components/Users/Users";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register></Register>,
+  },
+  {
+    path: "/users",
+    element: <Users></Users>,
+    loader: () => fetch("http://localhost:5000/user"),
   },
 ]);
 export default router;

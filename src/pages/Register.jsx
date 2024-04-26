@@ -1,8 +1,13 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 const Register = () => {
+  const [regError, setRegError] = useState("");
+  const [regSuccess, setRegSuccess] = useState("");
+  const [showPass, setShowPass] = useState(false);
   const { createUser } = useContext(AuthContext);
 
   const handleSignUp = (e) => {
@@ -11,9 +16,31 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+
+    const acceptTerms = e.target.terms.checked;
+    // password validation
+    if (password.length < 6) {
+      setRegError("Password should be at least 6 charecters or longer");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      setRegError("Must have an Uppercase letter in the password.");
+      return;
+    } else if (!/[a-z]/.test(password)) {
+      setRegError("Must have a Lowercase letter in the password");
+      return;
+    } else if (!acceptTerms) {
+      setRegError("Please accept our terms and conditions!");
+      return;
+    }
+
+    setRegError("");
+    setRegSuccess("");
+
+    // user
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
+        setRegSuccess("Registration Completed");
         // new user
         const createdAt = result.user?.metadata?.creationTime;
         const user = { email, createdAt };
@@ -39,6 +66,8 @@ const Register = () => {
       })
       .catch((error) => {
         console.error(error);
+
+        setRegError(error.message);
       });
   };
 
@@ -71,19 +100,52 @@ const Register = () => {
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input
-                type="password"
-                placeholder="password"
-                name="password"
-                className="input input-bordered"
-                required
-              />
+              <div className="relative">
+                <input
+                  type={showPass ? "text" : "password"}
+                  placeholder="password"
+                  name="password"
+                  className="input input-bordered w-full"
+                  required
+                />
+                <span
+                  onClick={() => setShowPass(!showPass)}
+                  className="absolute right-2 top-4"
+                >
+                  {showPass ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
+                </span>
+              </div>
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
                 </a>
               </label>
             </div>
+            <div className="mb-2">
+              <input type="checkbox" name="terms" id="terms" />
+              <label className="ml-2 underline" htmlFor="terms">
+                Terms and Conditions
+              </label>
+            </div>
+            {regError && <p className="text-red-700">{regError}</p>}
+            {regSuccess && (
+              <div>
+                <span>
+                  <p className="text-green-700">{regSuccess}</p>
+                </span>
+                <span>
+                  <Link to="/">
+                    <a
+                      rel="noopener noreferrer"
+                      href="#"
+                      className="underline font-semibold ml-1 text-violet-600 "
+                    >
+                      Go Home To Explore
+                    </a>
+                  </Link>
+                </span>
+              </div>
+            )}
             <div className="form-control mt-6">
               <button className="btn btn-primary">Login</button>
             </div>

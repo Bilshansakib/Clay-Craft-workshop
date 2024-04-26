@@ -8,6 +8,7 @@ import Register from "../pages/Register";
 import ErrorPage from "../pages/Error_page";
 import HomePage from "../pages/HomePage";
 import Users from "../components/Users/Users";
+import ViewCraftDetails from "../components/ViewCraftDetails.jsx/ViewCraftDetails";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/myArtAndCraftList",
         element: <MyArtAndCraftList></MyArtAndCraftList>,
+      },
+      {
+        path: "/crafts/:id",
+        element: <ViewCraftDetails></ViewCraftDetails>,
       },
       {
         path: "/login",

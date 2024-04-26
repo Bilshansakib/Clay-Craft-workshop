@@ -15,11 +15,13 @@ const MyArtAndCraftList = () => {
       });
   }, [user]);
   return (
-    <div>
-      {item?.map((craft) => (
-        <MyCraftCard key={craft._id} craft={craft}></MyCraftCard>
-      ))}
-    </div>
+    <section className="container mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {item?.map((craft) => (
+          <MyCraftCard key={craft._id} craft={craft}></MyCraftCard>
+        ))}
+      </div>
+    </section>
   );
 };
 

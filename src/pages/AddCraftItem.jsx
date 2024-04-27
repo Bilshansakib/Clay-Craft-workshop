@@ -99,7 +99,7 @@ const AddCraftItem = () => {
           </div>
           <div>
             <label>Rating:</label>
-            <select name="customization">
+            <select name="rating">
               <option value="1.0">1.0</option>
               <option value="1.5">1.5</option>
               <option value="2.0">2.0</option>
@@ -122,7 +122,7 @@ const AddCraftItem = () => {
           </div>
           <div>
             <label>Processing Time:</label>
-            <select name="customization">
+            <select name="processingTime">
               <option value="1-2 business days">1-2 business days</option>
               <option value="3-5 business days">3-5 business days</option>
             </select>
@@ -138,13 +138,13 @@ const AddCraftItem = () => {
         <div className="col-span-2 flex justify-between">
           <div>
             <label>User Email:</label>
-            <select name="email">
+            <select name="userEmail">
               <option value={user.email}>{user.email}</option>
             </select>
           </div>
           <div>
             <label>User Name: </label>
-            <select name="user name">
+            <select name="userName">
               <option value={user.displayName}>{user.displayName}</option>
             </select>
           </div>

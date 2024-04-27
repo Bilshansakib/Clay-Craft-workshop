@@ -9,6 +9,7 @@ import ErrorPage from "../pages/Error_page";
 import HomePage from "../pages/HomePage";
 import Users from "../components/Users/Users";
 import ViewCraftDetails from "../components/ViewCraftDetails.jsx/ViewCraftDetails";
+import ViewDetails from "../components/ViewDetails/ViewDetails";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
       {
         path: "/allArtAndCraftItem",
         element: <AllArtAndCraft></AllArtAndCraft>,
+        loader: () => fetch("http://localhost:5000/craft"),
       },
       {
         path: "/addCraftItem",

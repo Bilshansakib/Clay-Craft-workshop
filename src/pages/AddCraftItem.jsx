@@ -63,25 +63,6 @@ const AddCraftItem = () => {
         onSubmit={handleAddCraft}
         className="p-20 border-2 grid md:grid-cols-1 lg:grid-cols-2 space-y-6"
       >
-        {/* <div className="flex">
-          <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="text">Art name</span>
-            </label>
-            <label className="input-group">
-              <input type="text" className="input input-bordered w-full" />
-            </label>
-          </div>
-          <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="text">Art name</span>
-            </label>
-            <label className="input-group">
-              <input type="text" className="input input-bordered w-full" />
-            </label>
-          </div>
-        </div> */}
-        {/*  */}
         <div className="col-span-2">
           <div className="form-control ">
             <label>Photo URL:</label>

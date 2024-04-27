@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 const MyCraftCard = ({ craft }) => {
   const {
+    _id,
     photo,
     itemName,
     subCategoryName,
@@ -29,8 +30,8 @@ const MyCraftCard = ({ craft }) => {
           </h2>
           <p>If a dog chews shoes whose shoes does he choose?</p>
           <div className="card-actions justify-end">
-            <Link>
-              <button className="btn">Delete</button>
+            <Link to={`/crafts/${_id}`}>
+              <button className="btn">update</button>
             </Link>
             <button className="btn">Delete</button>
           </div>

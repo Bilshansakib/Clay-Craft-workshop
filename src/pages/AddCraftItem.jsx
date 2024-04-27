@@ -84,12 +84,7 @@ const AddCraftItem = () => {
               <option value="Ceramics&Architectural">
                 Ceramics & Architectural
               </option>
-              <option
-                value="Home decor pottery
-"
-              >
-                Home decor pottery
-              </option>
+              <option value="Home decor pottery">Home decor pottery</option>
             </select>
           </div>
           <div>
@@ -104,7 +99,17 @@ const AddCraftItem = () => {
           </div>
           <div>
             <label>Rating:</label>
-            <input type="text" name="rating" />
+            <select name="customization">
+              <option value="1.0">1.0</option>
+              <option value="1.5">1.5</option>
+              <option value="2.0">2.0</option>
+              <option value="2.5">2.5</option>
+              <option value="3.0">3.0</option>
+              <option value="3.5">3.5</option>
+              <option value="4.0">4.0</option>
+              <option value="4.5">4.5</option>
+              <option value="5.0">5.0</option>
+            </select>
           </div>
         </div>
         <div className="col-span-2">
@@ -117,7 +122,10 @@ const AddCraftItem = () => {
           </div>
           <div>
             <label>Processing Time:</label>
-            <input type="text" name="processingTime" />
+            <select name="customization">
+              <option value="1-2 business days">1-2 business days</option>
+              <option value="3-5 business days">3-5 business days</option>
+            </select>
           </div>
         </div>
         <div className="col-span-2">
@@ -130,11 +138,15 @@ const AddCraftItem = () => {
         <div className="col-span-2 flex justify-between">
           <div>
             <label>User Email:</label>
-            <input type="email" name="userEmail" />
+            <select name="email">
+              <option value={user.email}>{user.email}</option>
+            </select>
           </div>
           <div>
-            <label>User Name:</label>
-            <input type="text" name="userName" />
+            <label>User Name: </label>
+            <select name="user name">
+              <option value={user.displayName}>{user.displayName}</option>
+            </select>
           </div>
         </div>
         <input

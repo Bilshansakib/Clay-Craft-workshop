@@ -83,7 +83,7 @@ const ViewDetails = () => {
                 <span className="btm-nav-label">Home</span>
               </Link>
               <Link
-                to={`/viewDetails/${craftDetails._id}`}
+                to={`/crafts/${craftDetails._id}`}
                 className="bg-white-200 text-teal-600"
               >
                 <button>

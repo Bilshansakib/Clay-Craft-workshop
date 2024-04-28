@@ -30,15 +30,7 @@ const AllArtAndCraft = () => {
                 <th className="p-3">Status</th>
               </tr>
             </thead>
-            {/* photo,
-      itemName,
-      subCategoryName,
-      shortDescription,
-      price,
-      rating,
-      customization,
-      processingTime,
-      stockStatus, */}
+
             {craftData.map((c) => (
               <>
                 <tbody>

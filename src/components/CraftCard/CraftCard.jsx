@@ -5,6 +5,7 @@ import { GrNext } from "react-icons/gr";
 import { Link } from "react-router-dom";
 const CraftCard = ({ craft }) => {
   const {
+    _id,
     photo,
     itemName,
     subCategoryName,
@@ -40,7 +41,7 @@ const CraftCard = ({ craft }) => {
             </span>
           </div>
         </div>
-        <Link>
+        <Link to={`/viewDetails/${_id}`}>
           <div className="gap-2 btn-ghost  flex justify-center items-center p-2">
             <span>
               <GrNext />

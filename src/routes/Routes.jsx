@@ -23,6 +23,11 @@ const router = createBrowserRouter([
         loader: () => fetch("http://localhost:5000/craft"),
       },
       {
+        path: "/viewDetails/:id",
+        element: <ViewDetails></ViewDetails>,
+        loader: () => fetch("http://localhost:5000/craft"),
+      },
+      {
         path: "/allArtAndCraftItem",
         element: <AllArtAndCraft></AllArtAndCraft>,
         loader: () => fetch("http://localhost:5000/craft"),

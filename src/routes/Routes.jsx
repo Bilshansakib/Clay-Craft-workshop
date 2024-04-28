@@ -10,6 +10,7 @@ import HomePage from "../pages/HomePage";
 import Users from "../components/Users/Users";
 import ViewCraftDetails from "../components/ViewCraftDetails.jsx/ViewCraftDetails";
 import ViewDetails from "../components/ViewDetails/ViewDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,8 @@ const router = createBrowserRouter([
       {
         path: "/viewDetails/:id",
         element: <ViewDetails></ViewDetails>,
-        loader: () => fetch("http://localhost:5000/craft"),
+        loader: async ({ params }) =>
+          fetch(`http://localhost:5000/craft/${params._id}`),
       },
       {
         path: "/allArtAndCraftItem",

@@ -58,72 +58,135 @@ const ViewCraftDetails = () => {
   };
 
   return (
-    <form onSubmit={handleUpdate}>
-      <div className="col-span-2">
-        <div className="form-control ">
-          <label>Photo URL:</label>
-          <input type="text" name="photo" placeholder="photo URL" />
-        </div>
-        <div className="form-control">
-          <label>Item Name:</label>
-          <input type="text" name="itemName" />
-        </div>
+    <div className="flex flex-col max-w-screen-xl-lg p-8 shadow-sm rounded-xl lg:p-12 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800">
+      <h2 className="text-6xl hot font-semibold text-center">
+        Your opinion matters!
+      </h2>
+      <span className="text-center text-2xl"> Update Now</span>
+      <div className="flex space-y-3 mt-2 items-center justify-center flex-col w-full border-2 p-8">
+        <form onSubmit={handleUpdate} className="space-y-6 w-1/2 ">
+          <div className="col-span-2">
+            <div className="form-control">
+              <label>Photo URL:</label>
+              <input
+                className=" bg-slate-500 rounded"
+                type="text"
+                name="photo"
+                placeholder="photo URL"
+              />
+            </div>
+            <div className="form-control">
+              <label>Item Name:</label>
+              <input
+                className=" bg-slate-500 rounded"
+                type="text"
+                name="itemName"
+                placeholder="name"
+              />
+            </div>
+          </div>
+          <div className="col-span-2 space-y-4">
+            <div>
+              <label>Subcategory Name:</label>
+              {/* <input type="text" name="subCategoryName" /> */}
+              <select
+                className=" bg-slate-500 rounded w-full"
+                name="subCategoryName "
+              >
+                <option value="ClayMadePottery">Clay-made pottery</option>
+                <option value="Stoneware">Stoneware</option>
+                <option value="Porcelain">Porcelain</option>
+                <option value="Ceramics&Architectural">
+                  Ceramics & Architectural
+                </option>
+                <option value="Home decor pottery">Home decor pottery</option>
+              </select>
+            </div>
+            <div className="flex items-center gap-1">
+              <label>Short Description :</label>
+              <textarea
+                className=" bg-slate-500 rounded w-full"
+                name="shortDescription"
+                placeholder="description"
+              />
+            </div>
+          </div>
+          <div className="col-span-2 space-y-6">
+            <div className="flex items-center gap-1">
+              <label>Price:</label>
+              <input
+                className=" bg-slate-500 rounded w-full"
+                type="text"
+                name="price"
+              />
+            </div>
+            <div className="flex items-center gap-1">
+              <label>Rating:</label>
+              <input
+                className=" bg-slate-500 rounded w-full"
+                type="text"
+                name="rating"
+              />
+            </div>
+          </div>
+          <div className="col-span-2">
+            <div>
+              <label>Customization:</label>
+              <select
+                className=" bg-slate-500 rounded w-full"
+                name="customization"
+              >
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div>
+              <label>Processing Time:</label>
+              <input
+                className=" bg-slate-500 rounded w-full"
+                type="text"
+                name="processingTime"
+              />
+            </div>
+          </div>
+          <div className="col-span-2">
+            <label>Stock Status:</label>
+            <select className=" bg-slate-500 rounded w-full" name="stockStatus">
+              <option value="inStock">In Stock</option>
+              <option value="madeToOrder">Made to Order</option>
+            </select>
+          </div>
+          <input
+            type="submit"
+            value="Update Now"
+            className="col-span-2 btn flex flex-col w-full"
+          />
+
+          {/* <div className="flex flex-col w-full">
+            <textarea
+              rows="3"
+              placeholder="Message..."
+              className="py-4 my-8 font-semibold rounded-md text-gray-900 dark:text-gray-50 bg-violet-400 dark:bg-violet-600"
+            ></textarea>
+
+            <button
+              type="submit"
+              value="update"
+              className="py-4 my-8 font-semibold rounded-md text-gray-900 dark:text-gray-50 bg-violet-400 dark:bg-violet-600"
+            >
+              Update Now
+            </button>
+          </div> */}
+        </form>
+        <a
+          rel="noopener noreferrer"
+          href="/"
+          className="text-sm text-gray-400 underline dark:text-gray-600"
+        >
+          Maybe later
+        </a>
       </div>
-      <div className="col-span-2">
-        <div>
-          <label>Subcategory Name:</label>
-          {/* <input type="text" name="subCategoryName" /> */}
-          <select name="subCategoryName">
-            <option value="ClayMadePottery">Clay-made pottery</option>
-            <option value="Stoneware">Stoneware</option>
-            <option value="Porcelain">Porcelain</option>
-            <option value="Ceramics&Architectural">
-              Ceramics & Architectural
-            </option>
-            <option value="Home decor pottery">Home decor pottery</option>
-          </select>
-        </div>
-        <div>
-          <label>Short Description:</label>
-          <textarea name="shortDescription" />
-        </div>
-      </div>
-      <div className="col-span-2">
-        <div>
-          <label>Price:</label>
-          <input type="text" name="price" />
-        </div>
-        <div>
-          <label>Rating:</label>
-          <input type="text" name="rating" />
-        </div>
-      </div>
-      <div className="col-span-2">
-        <div>
-          <label>Customization:</label>
-          <select name="customization">
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
-        </div>
-        <div>
-          <label>Processing Time:</label>
-          <input type="text" name="processingTime" />
-        </div>
-      </div>
-      <div className="col-span-2">
-        <label>Stock Status:</label>
-        <select name="stockStatus">
-          <option value="inStock">In Stock</option>
-          <option value="madeToOrder">Made to Order</option>
-        </select>
-      </div>
-      <input
-        type="submit"
-        value="update"
-        className="col-span-2 btn btn-primary"
-      />
-    </form>
+    </div>
   );
 };
 

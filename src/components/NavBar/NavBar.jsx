@@ -1,9 +1,25 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../Hooks/UseAuth";
+import { useEffect, useState } from "react";
 
 const NavBar = () => {
   const { user, logOut } = useAuth() || {};
-  console.log(user);
+
+  const [theme, setTheme] = useState("nord");
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
+  const handleToggle = (e) => {
+    if (e.target.checked) {
+      setTheme("retro");
+    } else {
+      setTheme("nord");
+    }
+  };
+  console.log(theme);
+  // console.log(user);
   const handleSignOut = () => {
     logOut()
       .then((result) => console.log(result))
@@ -14,21 +30,28 @@ const NavBar = () => {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
-        <NavLink to="/allArtAndCraftItem">All Art & craft Items</NavLink>
-      </li>
-      <li>
-        <NavLink to="/addCraftItem">Add Craft Item</NavLink>
-      </li>
-      <li>
-        <NavLink to="/myArtAndCraftList">My Art & Craft List</NavLink>
-      </li>
-      <li>
-        <NavLink to="/login">login</NavLink>
-      </li>
-      <li>
-        <NavLink to="/register">register</NavLink>
-      </li>
+      {user ? (
+        <>
+          <li>
+            <NavLink to="/allArtAndCraftItem">All Art & craft Items</NavLink>
+          </li>
+          <li>
+            <NavLink to="/addCraftItem">Add Craft Item</NavLink>
+          </li>
+          <li>
+            <NavLink to="/myArtAndCraftList">My Art & Craft List</NavLink>
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <NavLink to="/login">login</NavLink>
+          </li>
+          <li>
+            <NavLink to="/register">register</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 
@@ -59,7 +82,15 @@ const NavBar = () => {
             {Links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-2xl hot">Clay'Craft | WorkShop </a>
+        <div className="flex items-center">
+          <input
+            onChange={handleToggle}
+            type="checkbox"
+            className="toggle bg-orange-300 toggle-medium"
+          />
+
+          <a className="btn btn-ghost text-2xl hot">Clay'Craft | WorkShop </a>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{Links}</ul>

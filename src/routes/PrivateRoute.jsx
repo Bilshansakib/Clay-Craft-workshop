@@ -2,13 +2,13 @@ import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../components/Hooks/UseAuth";
 import { children } from "react";
 
-const PrivateRoute = () => {
+const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const location = useLocation();
 
   if (loading) {
     return (
-      <div className=" items-center py-4  rounded shadow-md w-60 sm:w-80 animate-pulse bg-gray-50">
+      <div className=" items-center py-4 text-center rounded shadow-md w-60 sm:w-80 animate-pulse bg-gray-50">
         <div className="flex p-4 space-x-4 sm:px-8">
           <div className="flex-shrink-0 w-16 h-16 rounded-full bg-gray-300"></div>
           <div className="flex-1 py-2 space-y-4">

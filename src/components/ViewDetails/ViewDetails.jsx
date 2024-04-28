@@ -3,8 +3,8 @@ import { LiaStarSolid } from "react-icons/lia";
 const ViewDetails = () => {
   const itemDetails = useLoaderData();
   const { _id } = useParams();
-  const itemData = itemDetails.find((data) => data.id == _id);
-  console.log(itemData);
+  const itemData = itemDetails.find((data) => data._id == _id);
+  console.log(itemData, itemDetails, _id);
   const {
     photo,
     itemName,
@@ -154,7 +154,7 @@ const ViewDetails = () => {
                         clipRule="evenodd"
                       ></path>
                     </svg>
-                    <span>Tristique enim nec</span>
+                    <span></span>
                   </li>
                 </ul>
                 <button

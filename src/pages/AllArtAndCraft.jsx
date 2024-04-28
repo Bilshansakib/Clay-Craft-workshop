@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { LiaStarSolid } from "react-icons/lia";
 const AllArtAndCraft = () => {
   const craftData = useLoaderData();
@@ -62,11 +62,13 @@ const AllArtAndCraft = () => {
                     <td className="p-3 text-right">
                       <p>$ {c.price}</p>
                     </td>
-                    <td className="p-3 text-right">
-                      <button className="px-3 py-1 font-semibold rounded-md bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50">
-                        <span>view Details</span>
-                      </button>
-                    </td>
+                    <Link to={`/viewDetails/${c._id}`}>
+                      <td className="p-3 text-right">
+                        <button className="px-3 py-1 font-semibold rounded-md bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50">
+                          <span>view Details</span>
+                        </button>
+                      </td>
+                    </Link>
                   </tr>
                 </tbody>
               </>

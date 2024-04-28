@@ -18,7 +18,7 @@ const CraftCard = ({ craft }) => {
     userEmail,
     userName,
   } = craft;
-
+  console.log(_id);
   return (
     <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800">
       <div className="flex space-x-4 justify-between">

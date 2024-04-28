@@ -1,10 +1,23 @@
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { LiaStarSolid } from "react-icons/lia";
+import { useEffect, useState } from "react";
 const ViewDetails = () => {
-  const itemDetails = useLoaderData();
-  const { _id } = useParams();
-  const itemData = itemDetails.find((data) => data._id == _id);
-  console.log(itemData, itemDetails, _id);
+  const { id } = useParams();
+  const [craftDetails, setCraftDetails] = useState({});
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/viewDetails/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCraftDetails(data);
+        console.log(data);
+      });
+  }, [id]);
+
+  // const itemDetails = useLoaderData();
+  // const { _id } = useParams();
+  // const itemData = itemDetails.find((data) => data._id == id);
+  // console.log(_id);
   const {
     photo,
     itemName,
@@ -15,9 +28,10 @@ const ViewDetails = () => {
     customization,
     processingTime,
     stockStatus,
-  } = itemData;
+  } = craftDetails;
   return (
     <>
+      {/* <div>Hi{craftDetails.price}</div> */}
       <div className="p-5 mx-auto sm:p-10 md:p-16 bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-800">
         <div className="flex flex-col max-w-3xl mx-auto overflow-hidden rounded">
           <img
@@ -69,7 +83,7 @@ const ViewDetails = () => {
                 <span className="btm-nav-label">Home</span>
               </Link>
               <Link
-                to={`/crafts/${itemData._id}`}
+                to={`/viewDetails/${craftDetails._id}`}
                 className="bg-white-200 text-teal-600"
               >
                 <button>
@@ -165,7 +179,7 @@ const ViewDetails = () => {
                 </button>
               </div>
             </div>
-            {/* <ul className="flex flex-col pt-4 space-y-2">
+            <ul className="flex flex-col pt-4 space-y-2">
               <li className="flex items-start justify-between">
                 <h3>Price</h3>
                 <div className="text-right">
@@ -182,7 +196,7 @@ const ViewDetails = () => {
                   </span>
                 </div>
               </li>
-            </ul> */}
+            </ul>
             <div className=" border-2 p-4 shadow-lg rounded col-span-2 ">
               <div className="border-2 flex overflow-hidden rounded-lg dark:bg-gray-50 dark:text-gray-800">
                 <div className="flex items-center justify-center px-4 bg-violet-600 text-gray-100">

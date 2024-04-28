@@ -26,8 +26,8 @@ const router = createBrowserRouter([
       {
         path: "/viewDetails/:id",
         element: <ViewDetails></ViewDetails>,
-        loader: async ({ params }) =>
-          fetch(`http://localhost:5000/craft/${params._id}`),
+        // loader: ({ params }) =>
+        //   fetch(`http://localhost:5000/viewDetails/${params._id}`),
       },
       {
         path: "/allArtAndCraftItem",

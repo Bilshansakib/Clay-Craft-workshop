@@ -18,7 +18,6 @@ const NavBar = () => {
       setTheme("nord");
     }
   };
-  console.log(theme);
   // console.log(user);
   const handleSignOut = () => {
     logOut()

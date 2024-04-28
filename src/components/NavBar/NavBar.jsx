@@ -21,7 +21,7 @@ const NavBar = () => {
         <NavLink to="/addCraftItem">Add Craft Item</NavLink>
       </li>
       <li>
-        <NavLink to="/myArtAndCraftList">My Art & Craft Item</NavLink>
+        <NavLink to="/myArtAndCraftList">My Art & Craft List</NavLink>
       </li>
       <li>
         <NavLink to="/login">login</NavLink>
@@ -59,7 +59,7 @@ const NavBar = () => {
             {Links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="btn btn-ghost text-2xl hot">Clay'Craft | WorkShop </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{Links}</ul>
@@ -74,7 +74,7 @@ const NavBar = () => {
                   <img
                     src={
                       user?.photoURL ||
-                      "https://i.ibb.co/y0yrnYQ/1681283571946.jpg"
+                      "https://i.ibb.co/rMb1Tvd/ben-kolde-bs2-Ba7t69m-M-unsplash.jpg"
                     }
                   />
                 </div>

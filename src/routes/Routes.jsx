@@ -25,13 +25,21 @@ const router = createBrowserRouter([
       },
       {
         path: "/viewDetails/:id",
-        element: <ViewDetails></ViewDetails>,
+        element: (
+          <PrivateRoute>
+            <ViewDetails></ViewDetails>
+          </PrivateRoute>
+        ),
         // loader: ({ params }) =>
         //   fetch(`http://localhost:5000/viewDetails/${params._id}`),
       },
       {
         path: "/allArtAndCraftItem",
-        element: <AllArtAndCraft></AllArtAndCraft>,
+        element: (
+          <PrivateRoute>
+            <AllArtAndCraft></AllArtAndCraft>
+          </PrivateRoute>
+        ),
         loader: () => fetch("http://localhost:5000/craft"),
       },
       {
@@ -40,7 +48,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/myArtAndCraftList",
-        element: <MyArtAndCraftList></MyArtAndCraftList>,
+        element: (
+          <PrivateRoute>
+            <MyArtAndCraftList></MyArtAndCraftList>
+          </PrivateRoute>
+        ),
         loader: () => fetch("http://localhost:5000/craft"),
       },
       {

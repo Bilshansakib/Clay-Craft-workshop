@@ -91,7 +91,7 @@ const ViewCraftDetails = () => {
               {/* <input type="text" name="subCategoryName" /> */}
               <select
                 className=" bg-slate-500 rounded w-full"
-                name="subCategoryName "
+                name="subCategoryName"
               >
                 <option value="ClayMadePottery">Clay-made pottery</option>
                 <option value="Stoneware">Stoneware</option>
@@ -161,22 +161,6 @@ const ViewCraftDetails = () => {
             value="Update Now"
             className="col-span-2 btn flex flex-col w-full"
           />
-
-          {/* <div className="flex flex-col w-full">
-            <textarea
-              rows="3"
-              placeholder="Message..."
-              className="py-4 my-8 font-semibold rounded-md text-gray-900 dark:text-gray-50 bg-violet-400 dark:bg-violet-600"
-            ></textarea>
-
-            <button
-              type="submit"
-              value="update"
-              className="py-4 my-8 font-semibold rounded-md text-gray-900 dark:text-gray-50 bg-violet-400 dark:bg-violet-600"
-            >
-              Update Now
-            </button>
-          </div> */}
         </form>
         <a
           rel="noopener noreferrer"

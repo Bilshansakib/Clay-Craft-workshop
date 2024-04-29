@@ -29,6 +29,7 @@ const ViewDetails = () => {
     processingTime,
     stockStatus,
   } = craftDetails;
+  console.log(craftDetails);
   return (
     <>
       {/* <div>Hi{craftDetails.price}</div> */}
@@ -102,7 +103,7 @@ const ViewDetails = () => {
                     />
                   </svg>
                 </button>
-                <span className="btm-nav-label">Update Card</span>
+                <span className="btm-nav-label">Update Your Card</span>
               </Link>
             </div>
           </div>
@@ -179,24 +180,7 @@ const ViewDetails = () => {
                 </button>
               </div>
             </div>
-            <ul className="flex flex-col pt-4 space-y-2">
-              <li className="flex items-start justify-between">
-                <h3>Price</h3>
-                <div className="text-right">
-                  <span className="block">$ {price}</span>
-                </div>
-              </li>
-              <li className="flex items-start justify-between">
-                <h3>
-                  <span className="text-sm dark:text-violet-600">Rating</span>
-                </h3>
-                <div className="text-right">
-                  <span className="flex items-center gap-2">
-                    <LiaStarSolid /> {rating}
-                  </span>
-                </div>
-              </li>
-            </ul>
+
             <div className=" border-2 p-4 shadow-lg rounded col-span-2 ">
               <div className="border-2 flex overflow-hidden rounded-lg dark:bg-gray-50 dark:text-gray-800">
                 <div className="flex items-center justify-center px-4 bg-violet-600 text-gray-100">

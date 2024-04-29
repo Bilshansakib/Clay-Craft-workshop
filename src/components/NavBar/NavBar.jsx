@@ -13,7 +13,7 @@ const NavBar = () => {
   }, [theme]);
   const handleToggle = (e) => {
     if (e.target.checked) {
-      setTheme("retro");
+      setTheme("dark");
     } else {
       setTheme("nord");
     }
@@ -29,11 +29,11 @@ const NavBar = () => {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
+      <li>
+        <NavLink to="/allArtAndCraftItem">All Art & craft Items</NavLink>
+      </li>
       {user ? (
         <>
-          <li>
-            <NavLink to="/allArtAndCraftItem">All Art & craft Items</NavLink>
-          </li>
           <li>
             <NavLink to="/addCraftItem">Add Craft Item</NavLink>
           </li>
@@ -55,9 +55,9 @@ const NavBar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar fixed z-10 bg-white h-28">
       <div className="navbar-start">
-        <div className="dropdown">
+        <div className="dropdown p-5">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -95,11 +95,10 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1">{Links}</ul>
       </div>
       <div className="navbar-end gap-2">
-        {user && user.email}
         {user ? (
           <>
-            <div className="dropdown dropdown-end">
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+            <div className="dropdown dropdown-end p-10">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar ">
                 <div className="w-10 rounded-full">
                   <img
                     src={
@@ -119,6 +118,11 @@ const NavBar = () => {
                   </button>
                 </li>
                 <li>
+                  <button className="btn btn-sm  btn-ghost">
+                    {user && user.email}
+                  </button>
+                </li>
+                <li>
                   <button
                     onClick={handleSignOut}
                     className="btn btn-sm  btn-ghost"
@@ -130,9 +134,17 @@ const NavBar = () => {
             </div>
           </>
         ) : (
-          <Link to="/login">
-            <button className="btn btn-ghost text-2xl ">Login</button>
-          </Link>
+          <>
+            <div className="p-10">
+              <Link to="/login">
+                <button className="btn btn-circle text-xs ">Login</button>
+              </Link>
+              /
+              <Link to="/register">
+                <button className="btn btn-link text-lg ">Sign Up</button>
+              </Link>
+            </div>
+          </>
         )}
       </div>
     </div>

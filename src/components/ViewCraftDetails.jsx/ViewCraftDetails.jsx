@@ -37,7 +37,7 @@ const ViewCraftDetails = () => {
       processingTime,
       stockStatus,
     };
-    fetch(`http://localhost:5000/updateCraft/${id}`, {
+    fetch(`https://prctice-1.vercel.app/updateCraft/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

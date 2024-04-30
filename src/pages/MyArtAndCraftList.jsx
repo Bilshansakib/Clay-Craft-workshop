@@ -20,7 +20,7 @@ const MyArtAndCraftList = () => {
   };
   // ........>
   useEffect(() => {
-    fetch(`http://localhost:5000/craft/${user?.email}`)
+    fetch(`https://prctice-1.vercel.app/craft/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -39,7 +39,7 @@ const MyArtAndCraftList = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/delete/${id}`, {
+        fetch(`https://prctice-1.vercel.app/delete/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

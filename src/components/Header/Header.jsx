@@ -10,20 +10,18 @@ import "swiper/css";
 import "swiper/css/bundle";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
+import AwesomeReveal from "../AwesomeReveal/AwesomeReveal";
 const Header = () => {
   return (
     <>
       <Swiper
         className="w-full h-[600px]"
-        autoplay={{ delay: 4500 }}
+        // autoplay={{ delay: 4500 }}
         modules={[Navigation, Pagination, Autoplay, Scrollbar, A11y]}
         spaceBetween={50}
-        loop={true}
         Navigation
         pagination={{ clickable: true }}
         slidesPerView={1}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
       >
         <SwiperSlide>
           <img
@@ -49,8 +47,10 @@ const Header = () => {
             alt="banner"
           />
         </SwiperSlide>
-        ...
       </Swiper>
+      <div className="hot text-center">
+        <AwesomeReveal></AwesomeReveal>
+      </div>
     </>
   );
 };

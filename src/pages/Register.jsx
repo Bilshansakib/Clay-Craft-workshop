@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import SocialMediaLogin from "../components/SocialMediaLogin.jsx/SocialMediaLogin";
 import useAuth from "../components/Hooks/UseAuth";
+import AwesomeReveal from "../components/AwesomeReveal/AwesomeReveal";
 const Register = () => {
   const { createUser } = useAuth();
   const [regError, setRegError] = useState("");
@@ -17,7 +18,9 @@ const Register = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    console.log(email, password, name, photoURL);
 
     const acceptTerms = e.target.terms.checked;
     // password validation
@@ -43,11 +46,12 @@ const Register = () => {
       .then((result) => {
         console.log(result.user);
         result.user;
+
         setRegSuccess("Registration Completed");
         // new user
         const createdAt = result.user?.metadata?.creationTime;
         const user = { email, createdAt };
-        fetch("http://localhost:5000/user", {
+        fetch("https://prctice-1.vercel.app/user", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -80,13 +84,40 @@ const Register = () => {
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Register now!</h1>
           <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+            Welcome to our community! We're thrilled that you've chosen to join
+            us. By registering with us, you've taken the first step towards
+            accessing a world of exciting opportunities and resources. Whether
+            you're here to connect with like-minded individuals, explore new
+            ideas, or discover unique experiences
           </p>
+          <AwesomeReveal></AwesomeReveal>
         </div>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form onSubmit={handleSignUp} className="card-body">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Photo</span>
+              </label>
+              <input
+                type="text"
+                name="photoURL"
+                placeholder="photo URL"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Username</span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="name"
+                className="input input-bordered"
+                required
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -130,25 +161,27 @@ const Register = () => {
                 Terms and Conditions
               </label>
             </div>
-            {regError && <p className="text-red-700">{regError}</p>}
-            {regSuccess && (
-              <div>
-                <span>
-                  <p className="text-green-700">{regSuccess}</p>
-                </span>
-                <span>
-                  <Link to="/">
-                    <a
-                      rel="noopener noreferrer"
-                      href="#"
-                      className="underline font-semibold ml-1 text-violet-600 "
-                    >
-                      Go Home To Explore
-                    </a>
-                  </Link>
-                </span>
-              </div>
-            )}
+            <div className="text-center ">
+              {regError && <p className="text-red-700">{regError}</p>}
+              {regSuccess && (
+                <div>
+                  <span>
+                    <p className="text-green-700">{regSuccess}</p>
+                  </span>
+                  <span>
+                    <Link to="/">
+                      <a
+                        rel="noopener noreferrer"
+                        href="#"
+                        className="underline font-semibold ml-1 text-violet-600 "
+                      >
+                        Go Home To Explore
+                      </a>
+                    </Link>
+                  </span>
+                </div>
+              )}
+            </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Sign In</button>
             </div>

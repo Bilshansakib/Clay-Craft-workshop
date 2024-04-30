@@ -20,14 +20,12 @@ const CraftCard = ({ craft }) => {
   } = craft;
   console.log(_id);
   return (
-    <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800">
+    <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-orange-900   text-gray-100 dark:text-gray-800">
       <div className="flex space-x-4 justify-between">
         <div className="flex space-x-4  ">
-          <img
-            alt=""
-            src={"https://source.unsplash.com/100x100/?portrait"}
-            className="object-cover w-12 h-12 rounded-full shadow bg-gray-500 dark:bg-gray-500"
-          />
+          <h1 className="flex text-2xl justify-center hot items-center bg-black h-14 w-14  rounded-full font-semibold ">
+            C&A
+          </h1>
           <div className="flex flex-col space-y-1">
             <a
               rel="noopener noreferrer"

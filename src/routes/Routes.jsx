@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage></HomePage>,
-        loader: () => fetch("http://localhost:5000/craft"),
+        loader: () => fetch("https://prctice-1.vercel.app/craft"),
       },
       {
         path: "/viewDetails/:id",
@@ -31,16 +31,12 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         // loader: ({ params }) =>
-        //   fetch(`http://localhost:5000/viewDetails/${params._id}`),
+        //   fetch(`https://prctice-1-qxcivg1gx-bilshans-projects.vercel.app//viewDetails/${params._id}`),
       },
       {
         path: "/allArtAndCraftItem",
-        element: (
-          <PrivateRoute>
-            <AllArtAndCraft></AllArtAndCraft>
-          </PrivateRoute>
-        ),
-        loader: () => fetch("http://localhost:5000/craft"),
+        element: <AllArtAndCraft></AllArtAndCraft>,
+        loader: () => fetch("https://prctice-1.vercel.app/craft"),
       },
       {
         path: "/addCraftItem",
@@ -53,7 +49,7 @@ const router = createBrowserRouter([
             <MyArtAndCraftList></MyArtAndCraftList>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/craft"),
+        loader: () => fetch("https://prctice-1.vercel.app/craft"),
       },
       {
         path: "/crafts/:id",
@@ -73,7 +69,7 @@ const router = createBrowserRouter([
   {
     path: "/users",
     element: <Users></Users>,
-    loader: () => fetch("http://localhost:5000/user"),
+    loader: () => fetch("https://prctice-1.vercel.app/user"),
   },
 ]);
 export default router;

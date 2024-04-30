@@ -6,7 +6,7 @@ const ViewDetails = () => {
   const [craftDetails, setCraftDetails] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/viewDetails/${id}`)
+    fetch(`https://prctice-1.vercel.app/viewDetails/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setCraftDetails(data);
@@ -83,10 +83,7 @@ const ViewDetails = () => {
                 </button>
                 <span className="btm-nav-label">Home</span>
               </Link>
-              <Link
-                to={`/crafts/${craftDetails._id}`}
-                className="bg-white-200 text-teal-600"
-              >
+              <Link to={`/addCraftItem`} className="bg-white-200 text-teal-600">
                 <button>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

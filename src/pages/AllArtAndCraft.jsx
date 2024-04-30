@@ -2,6 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { LiaStarSolid } from "react-icons/lia";
 const AllArtAndCraft = () => {
   const craftData = useLoaderData();
+  console.log(craftData);
 
   return (
     <>

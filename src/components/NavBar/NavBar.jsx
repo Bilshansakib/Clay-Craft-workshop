@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../Hooks/UseAuth";
 import { useEffect, useState } from "react";
-
+import { Tooltip } from "react-tooltip";
 const NavBar = () => {
   const { user, logOut } = useAuth() || {};
 
@@ -55,9 +55,9 @@ const NavBar = () => {
   );
 
   return (
-    <div className="navbar fixed z-10 bg-white h-28">
+    <div className="navbar sm:px-8   shadow-lg  bg-white h-28">
       <div className="navbar-start">
-        <div className="dropdown p-5">
+        <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +76,7 @@ const NavBar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-right  dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-box w-52"
           >
             {Links}
           </ul>
@@ -85,10 +85,13 @@ const NavBar = () => {
           <input
             onChange={handleToggle}
             type="checkbox"
-            className="toggle bg-orange-300 toggle-medium"
+            className="toggle bg-orange-700 toggle-medium"
           />
 
-          <a className="btn btn-ghost text-2xl hot">Clay'Craft | WorkShop </a>
+          <a className="btn btn-ghost text-2xl hot">
+            <span className="text-orange-700 text-4xl -mr-2">Clay'</span>
+            <span className="text-4xl">Craft</span> | WorkShop
+          </a>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -110,7 +113,7 @@ const NavBar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                className="menu  menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
                   <button className="btn btn-sm  btn-ghost">
@@ -118,14 +121,17 @@ const NavBar = () => {
                   </button>
                 </li>
                 <li>
-                  <button className="btn btn-sm  btn-ghost">
+                  <button
+                    className="btn btn-sm tooltip tooltip-top btn-ghost"
+                    data-tip="Email"
+                  >
                     {user && user.email}
                   </button>
                 </li>
                 <li>
                   <button
                     onClick={handleSignOut}
-                    className="btn btn-sm  btn-ghost"
+                    className="btn btn-sm btn-ghost"
                   >
                     Logout
                   </button>
@@ -135,12 +141,20 @@ const NavBar = () => {
           </>
         ) : (
           <>
-            <div className="p-10">
-              <Link to="/login">
-                <button className="btn btn-circle text-xs ">Login</button>
+            <div className="hot">
+              <Link
+                to="/login"
+                className="tooltip -mr-2 tooltip-top"
+                data-tip="Login"
+              >
+                <button className="btn btn-link text-lg ">Logins</button>
               </Link>
-              /
-              <Link to="/register">
+
+              <Link
+                to="/register"
+                className="tooltip  tooltip-top"
+                data-tip="Register Now"
+              >
                 <button className="btn btn-link text-lg ">Sign Up</button>
               </Link>
             </div>
